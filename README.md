@@ -2,8 +2,8 @@
 
 ## 📅 Project Details
 
-**Student Name:** [Your Name]
-**Student ID:** [Your ID]
+**Student Name:** Gad HIRWA
+**Student ID:** 27338
 **Lecturer:** Eric Maniraguha
 **Course Code & Name:** INSY 8311 - Database Development with PL/SQL
 **Academic Year:** 2024-2025
@@ -40,8 +40,6 @@ This system addresses these issues by offering automation, traceability, and dat
 
 ## 📊 Entity-Relationship Diagram (ERD)
 
-*(The ERD was created using Lucidchart and can be found in the project documentation on GitHub.)*
-
 **Entities:**
 
 * **Users** (User\_ID, Name, Contact\_Info, Role)
@@ -61,61 +59,72 @@ This system addresses these issues by offering automation, traceability, and dat
 
 ### 🔢 Tables
 
-```sql
--- USERS Table
-CREATE TABLE USERS (
-    User_ID NUMBER PRIMARY KEY,
-    Name VARCHAR2(100) NOT NULL,
-    Contact_Info VARCHAR2(100),
-    Role VARCHAR2(20) NOT NULL CHECK (Role IN ('Admin', 'Owner'))
-);
+* `USERS`
+* `VEHICLES`
+* `PARKING_SLOTS`
+* `TRANSACTIONS`
+* `ATTENDANTS`
+* `PUBLIC_HOLIDAYS`
+* `AUDIT_LOG`
 
--- VEHICLES Table
-CREATE TABLE VEHICLES (
-    Vehicle_ID NUMBER PRIMARY KEY,
-    Owner_ID NUMBER NOT NULL,
-    License_Plate VARCHAR2(20) UNIQUE NOT NULL,
-    Type VARCHAR2(20),
-    FOREIGN KEY (Owner_ID) REFERENCES USERS(User_ID)
-);
+### 💡 Constraints
 
--- PARKING_SLOTS Table
-CREATE TABLE PARKING_SLOTS (
-    Slot_ID NUMBER PRIMARY KEY,
-    Status VARCHAR2(10) DEFAULT 'Available' NOT NULL CHECK (Status IN ('Available', 'Occupied')),
-    Vehicle_Assigned NUMBER UNIQUE,
-    FOREIGN KEY (Vehicle_Assigned) REFERENCES VEHICLES(Vehicle_ID)
-);
+* **Primary/Foreign Keys:** Implemented to ensure data integrity and relationships between tables.
+* **NOT NULL:** Applied to mandatory attributes to prevent missing data.
+* **UNIQUE:** Used for attributes like `User_ID`, `Vehicle_ID`, `License_Plate`, and `Slot_ID`.
+* **CHECK constraints:** Enforced for attributes such as `Role` (e.g., 'Admin', 'Manager', 'Owner', 'Attendant'), `Status` in `PARKING_SLOTS` (e.g., 'Available', 'Occupied'), and `Payment_Status` in `TRANSACTIONS` (e.g., 'Pending', 'Paid').
 
--- TRANSACTIONS Table
-CREATE TABLE TRANSACTIONS (
-    Transaction_ID NUMBER PRIMARY KEY,
-    Vehicle_ID NUMBER NOT NULL,
-    Entry_Time TIMESTAMP NOT NULL,
-    Exit_Time TIMESTAMP,
-    Payment_Status VARCHAR2(20) DEFAULT 'Pending' CHECK (Payment_Status IN ('Pending', 'Paid')),
-    FOREIGN KEY (Vehicle_ID) REFERENCES VEHICLES(Vehicle_ID)
-);
+### 🔢 SQL Components
 
--- ATTENDANTS Table
-CREATE TABLE ATTENDANTS (
-    Employee_ID NUMBER PRIMARY KEY,
-    Name VARCHAR2(100) NOT NULL,
-    Shift VARCHAR2(20),
-    Assigned_Area VARCHAR2(50)
-);
+#### 🛠️ Procedures
 
--- PUBLIC_HOLIDAYS Table
-CREATE TABLE PUBLIC_HOLIDAYS (
-    Holiday_Date DATE PRIMARY KEY,
-    Description VARCHAR2(100)
-);
+* `AssignParkingSlot(vehicle_id, slot_id)`: Assigns a specific parking slot to a vehicle.
+* `ReleaseParkingSlot(slot_id)`: Marks a parking slot as available when a vehicle leaves.
 
--- AUDIT_LOG Table
-CREATE TABLE AUDIT_LOG (
-    Log_ID NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    Timestamp TIMESTAMP DEFAULT SYSTIMESTAMP NOT NULL,
-    User_Name VARCHAR2(100),
-    Action VARCHAR2(100) NOT NULL,
-    Details CLOB
-);
+#### 💡 Functions
+
+* `GetTotalParkingTime(transaction_id)`: Calculates the total parking duration for a given transaction.
+
+#### 👀 Cursors
+
+* Cursor to list all vehicles currently parked, providing details like license plate and assigned slot.
+
+#### 📦 Packages
+
+* `ParkingOps`: Contains procedures and functions related to parking slot assignments and transaction management.
+
+#### 🚧 Triggers
+
+* Trigger to prevent Data Manipulation Language (DML) operations (INSERT, UPDATE, DELETE) on critical tables during weekdays and public holidays to maintain data consistency during operational hours.
+* Trigger to log all sensitive changes (e.g., updates to user roles, parking slot assignments, transaction payments) to the `AUDIT_LOG` table for security and traceability.
+
+### 🧪 Sample Data
+
+**(Rwandan Names Used)**
+
+* **Users:** Niyonzima Claude, Uwase Sandrine, Habimana Patrick
+* **Attendants:** Kabera Alice, Nshimiyimana Jean
+
+## 💼 Tools Used
+
+* Oracle 21c
+* SQL Developer
+* Lucidchart for ERD
+* GitHub for documentation
+
+## 📅 Timeline
+
+* **Phase I:** Problem Statement ✔️
+* **Phase II:** Business Process Modeling ✔️
+* **Phase III:** Logical Design ✔️
+* **Phase IV:** Database Creation ✔️
+* **Phase V:** Table Implementation & Data Insertion ✔️
+* **Phase VI:** Procedures, Functions, Cursors ✔️
+* **Phase VII:** Triggers, Packages, Auditing ✔️
+* **Phase VIII:** Final Presentation & GitHub Report ✔️
+
+## 📄 License
+
+Submitted as Capstone Project for Database Development with PL/SQL (2024-2025) at AUCA.
+
+> “Work at it with all your heart, as working for the Lord…” — Colossians 3:23
