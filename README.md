@@ -121,6 +121,8 @@ This system addresses these issues by offering automation, traceability, and dat
 
 * **Phase IV:** Database Creation ✔️
 * **Phase V:** Table Implementation & Data Insertion ✔️
+* <img width="960" alt="CREATING ALL TABKLES" src="https://github.com/user-attachments/assets/dfe449a7-3b05-4e54-825c-b4978e313d38" />
+
 * **Phase VI:** Procedures, Functions, Cursors ✔️
 * **Phase VII:** Triggers, Packages, Auditing ✔️
 * **Phase VIII:** Final Presentation & GitHub Report ✔️
