@@ -2,11 +2,11 @@
 
 ## 📅 Project Details
 
-**Student Name:** Gad HIRWA
-**Student ID:** 27338
-**Lecturer:** Eric Maniraguha
-**Course Code & Name:** INSY 8311 - Database Development with PL/SQL
-**Academic Year:** 2024-2025
+- **Student Name**: Gad HIRWA
+- **Student ID**: 27338
+- **Lecturer**: Eric Maniraguha
+- **Course Code & Name**: INSY 8311 - Database Development with PL/SQL
+- **Academic Year**: 2024-2025
 
 ## 🌐 Introduction
 
