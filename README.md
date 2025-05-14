@@ -117,12 +117,8 @@ This system addresses these issues by offering automation, traceability, and dat
 * **Phase I:** Problem Statement ✔️
 * **Phase II:** Business Process Modeling ✔️
 * **Phase III:** Logical Design ✔️
-* 
-<img width="960" alt="ERD1" src="https://github.com/user-attachments/assets/a80e0f87-386b-4b2f-9342-123155bc5fb0" />
 * **Phase IV:** Database Creation ✔️
 * **Phase V:** Table Implementation & Data Insertion ✔️
-* 
-<img width="960" alt="CREATING ALL TABKLES" src="https://github.com/user-attachments/assets/1f28db79-175d-435f-b5ca-82df6567bcff" />
 * **Phase VI:** Procedures, Functions, Cursors ✔️
 * **Phase VII:** Triggers, Packages, Auditing ✔️
 * **Phase VIII:** Final Presentation & GitHub Report ✔️
